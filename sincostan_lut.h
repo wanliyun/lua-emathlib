@@ -15,7 +15,7 @@ static lua_Number emath_deg2rad(lua_Number deg)
 	return deg * (EMATH_PI / 180);
 }
 
-/* 存放了[0-180]度范围的cos值,每隔0.5度一次 */
+/* save cos value in range [0-180] in degre, pre 0.5 deg */
 static lua_Number deg2cosLUT[361]  = {
 1.0000000000, 0.9999619231, 0.9998476952, 0.9996573250, 0.9993908270, 0.9990482216, 0.9986295348, 0.9981347984, 0.9975640503, 0.9969173337,
 0.9961946981, 0.9953961984, 0.9945218954, 0.9935718557, 0.9925461516, 0.9914448614, 0.9902680687, 0.9890158634, 0.9876883406, 0.9862856015,
@@ -56,7 +56,7 @@ static lua_Number deg2cosLUT[361]  = {
 -1.0000000000,
 };
 
-/*查表获取cos值,精确到0.5度*/
+/* accuracy : 0.5 deg*/
 static lua_Number emath_cos_tablelookup (lua_Number deg) {
 	//printf("math_cos_tablelookup\n");
 	long ideg = (long)round(deg * 2);

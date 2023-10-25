@@ -1,8 +1,7 @@
+#ifndef SLUA_3RD_LOADED
 #include <lua.h>
 #include <lauxlib.h>
-#include <stdlib.h>
-#include <string.h>
-#include <assert.h>
+#endif
 
 #include "sincostan_lut.h"
 
