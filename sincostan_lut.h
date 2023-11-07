@@ -10,11 +10,6 @@ static lua_Number emath_rad2deg(lua_Number r)
 	return r * (180 / EMATH_PI);
 }
 
-static lua_Number emath_deg2rad(lua_Number deg)
-{
-	return deg * (EMATH_PI / 180);
-}
-
 /* save cos value in range [0-180] in degre, pre 0.5 deg */
 static lua_Number deg2cosLUT[361]  = {
 1.0000000000, 0.9999619231, 0.9998476952, 0.9996573250, 0.9993908270, 0.9990482216, 0.9986295348, 0.9981347984, 0.9975640503, 0.9969173337,
@@ -60,7 +55,7 @@ static lua_Number deg2cosLUT[361]  = {
 static lua_Number emath_cos_tablelookup (lua_Number deg) {
 	//printf("math_cos_tablelookup\n");
 	long ideg = (long)round(deg * 2);
-	ideg = abs(ideg);
+	ideg = labs(ideg);
 	ideg = ideg % 720;
 	ideg = ideg < 360 ? ideg : 720 - ideg;
 	lua_Number ret = deg2cosLUT[ideg];
